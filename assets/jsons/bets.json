@@ -1,0 +1,64 @@
+{
+    "bets" :[
+        {
+            "id" : "1",
+            "name" : "Loaded Data",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "2",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "3",
+            "name" : "Loaded Data 2",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "4",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "5",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "6",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "7",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "8",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "9",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        },
+        {
+            "id" : "10",
+            "name" : "Class Representative",
+            "pool": "550",
+            "players": "37"
+        }
+    ]
+}
