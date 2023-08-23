@@ -1,3 +1,5 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -199,35 +201,44 @@ class _AvailableBetsState extends State<AvailableBets> {
     super.initState();
 
     _loadJson().then((value) {
-      print("Future value: $value");
+      //print("Future value: $value");
       setState(() {
         bets = value;
       });
     });
 
-    //bets = loadJson();
-    // Future<List<dynamic>> Bets = loadJson();
-    // bets = await Bets;
     incremementPadding();
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [
-      SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.blue,
-              height: 100,
-              child: Text('Item: ${bets[index]}'),
-            );
-          },
-          childCount: bets.length,
+    return Container(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: const Color.fromARGB(255, 133, 168, 185),
         ),
-      )
-    ]);
+
+        //color: Colors.blue,
+        height: 490,
+        padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
+        //duration: const Duration(milliseconds: 500),
+        child: CustomScrollView(slivers: [
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Bet(
+                    name: bets[index]["name"],
+                    pool: bets[index]["pool"],
+                    players: bets[index]["players"]);
+              },
+              childCount: bets.length,
+            ),
+          )
+        ]),
+      ),
+    );
   }
 }
 
@@ -252,7 +263,7 @@ class _BetState extends State<Bet> {
   String players;
 
   _BetState({required this.name, required this.pool, required this.players});
-
+  //TODO add on pressed function
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -261,7 +272,7 @@ class _BetState extends State<Bet> {
           width: 100,
           height: 50,
           decoration: const BoxDecoration(
-            color: Color.fromARGB(134, 47, 84, 153),
+            color: Color.fromARGB(160, 103, 155, 180),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Row(
