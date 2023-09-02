@@ -5,11 +5,25 @@ import 'package:flutter/services.dart';
 
 class LabelledTextField extends StatelessWidget {
   final String label;
+  TextEditingController? controller;
+  bool? enabled;
   //final Function(String) subFunction;
-  const LabelledTextField({
+  LabelledTextField({
     super.key,
     required this.label,
     //required this.subFunction
+  });
+
+  LabelledTextField.readable({
+    super.key,
+    required this.label,
+    required this.controller,
+  });
+
+  LabelledTextField.offOn({
+    super.key,
+    required this.label,
+    required this.enabled,
   });
 
   @override
@@ -24,6 +38,8 @@ class LabelledTextField extends StatelessWidget {
           ),
           labelText: label,
         ),
+        controller: controller,
+        enabled: enabled,
         //onSubmitted: subFunction,
       ),
     );
@@ -52,6 +68,7 @@ class _BetState extends State<Bet> {
 
   _BetState({required this.name, required this.pool, required this.players});
   //TODO add on pressed function
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -81,4 +98,25 @@ class _BetState extends State<Bet> {
           ),
         ));
   }
+}
+
+// Custom Functions
+
+//Function to load bet objects from json
+
+Future<List<dynamic>> loadBets() async {
+  final String response = await rootBundle.loadString('assets/jsons/bets.json');
+  final jsonData = await json.decode(response)['bets'];
+  return jsonData;
+}
+
+Future<List<String>> loadSearchTerms() async {
+  final String response = await rootBundle
+      .loadString('assets/jsons/bets.json'); //change to api or different json
+  final jsonData = await json.decode(response)['bets'];
+  List<String> searchTerms = [];
+  for (var bet in jsonData) {
+    searchTerms.add(bet['name']);
+  }
+  return searchTerms;
 }

@@ -24,8 +24,8 @@ class LoginPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Consolas'),
             )),
-        const LabelledTextField(label: "Username"),
-        const LabelledTextField(label: "Password"),
+        LabelledTextField(label: "Username"),
+        LabelledTextField(label: "Password"),
         ElevatedButton(
             child: const Text('Login'),
             onPressed: () {

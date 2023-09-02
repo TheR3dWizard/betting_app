@@ -6,16 +6,14 @@ import 'utilities.dart';
 
 class SearchMenu extends SearchDelegate {
 // Demo list to show querying
-  List<String> searchTerms = [
-    "Apple",
-    "Banana",
-    "Mango",
-    "Pear",
-    "Watermelons",
-    "Blueberries",
-    "Pineapples",
-    "Strawberries"
-  ];
+
+  final List<String> terms;
+
+  List<String> searchTerms = ["Nothing Loaded"];
+
+  SearchMenu(this.terms) {
+    searchTerms = terms;
+  }
 
 // first overwrite to
 // clear the search text
@@ -26,7 +24,7 @@ class SearchMenu extends SearchDelegate {
         onPressed: () {
           query = '';
         },
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
       ),
     ];
   }
@@ -38,7 +36,7 @@ class SearchMenu extends SearchDelegate {
       onPressed: () {
         close(context, null);
       },
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
     );
   }
 
@@ -80,6 +78,52 @@ class SearchMenu extends SearchDelegate {
           title: Text(result),
         );
       },
+    );
+  }
+}
+
+class SearchPage extends StatefulWidget {
+  final List<String> searchTerms;
+  const SearchPage({super.key, required this.searchTerms});
+  @override
+  State<SearchPage> createState() => _SearchPageState(searchTerms: searchTerms);
+}
+
+//TODO Show recent searches
+
+class _SearchPageState extends State<SearchPage> {
+  List<String> searchTerms;
+  _SearchPageState({required this.searchTerms});
+
+  @override
+  void initState() {
+    super.initState();
+
+    loadSearchTerms().then((value) {
+      //print("Future value: $value");
+      setState(() {
+        searchTerms = value;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search Page'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(context: context, delegate: SearchMenu(searchTerms));
+            },
+            icon: const Icon(Icons.search),
+          ),
+        ],
+      ),
+      body: const Center(
+        child: Text('Search Page'),
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'utilities.dart';
+import 'searchpage.dart';
 
 class HomePage extends StatefulWidget {
   final EdgeInsets padding;
@@ -14,11 +15,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   EdgeInsets padding;
+
   _HomePageState({required this.padding});
 
   @override
   void initState() {
     super.initState();
+
     incremementPadding();
   }
 
@@ -30,13 +33,17 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // void searchMenu(){
-  //   Navigator.push(
-  //               context,
-  //               MaterialPageRoute(
-  //                   builder: (context) => const SearchMenu()),
-  //             );
-  // }
+  final SearchText = TextEditingController();
+
+  void searchMenu() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const SearchPage(
+                searchTerms: [],
+              )),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +66,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Padding(
+                      children: [
+                        const Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 1.0, horizontal: 10),
                           child: Text(
@@ -69,8 +76,17 @@ class _HomePageState extends State<HomePage> {
                                 TextStyle(fontSize: 20, fontFamily: 'Consolas'),
                           ),
                         ),
-                        LabelledTextField(
-                          label: "Search", //subFunction: ()
+                        OutlinedButton(
+                          onPressed: () {
+                            searchMenu();
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                color: Color.fromARGB(255, 133, 168, 185),
+                                width: 2),
+                          ),
+                          child: LabelledTextField.offOn(
+                              label: "Search", enabled: false),
                         ),
                       ])),
             ),
@@ -106,21 +122,11 @@ class _AvailableBetsState extends State<AvailableBets> {
     });
   }
 
-  Future<List<dynamic>> _loadJson() async {
-    final String response =
-        await rootBundle.loadString('assets/jsons/bets.json');
-    final jsonData = await json.decode(response)['bets'];
-    // setState(() {
-    //   List<dynamic> bets = jsonData['bets'];
-    // });
-    return jsonData;
-  }
-
   @override
   void initState() {
     super.initState();
 
-    _loadJson().then((value) {
+    loadBets().then((value) {
       //print("Future value: $value");
       setState(() {
         bets = value;
