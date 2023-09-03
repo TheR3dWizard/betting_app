@@ -1,8 +1,6 @@
-import 'dart:convert';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'utilities.dart';
+import 'betpage.dart';
 
 class SearchMenu extends SearchDelegate {
 // Demo list to show querying
@@ -43,6 +41,16 @@ class SearchMenu extends SearchDelegate {
 // third overwrite to show query result
   @override
   Widget buildResults(BuildContext context) {
+    void openBet() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const BetPage(
+                  details: [],
+                )),
+      );
+    }
+
     List<String> matchQuery = [];
     for (var fruit in searchTerms) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
@@ -53,9 +61,7 @@ class SearchMenu extends SearchDelegate {
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
+        return TextButton(onPressed: openBet, child: Text(result));
       },
     );
   }
@@ -64,6 +70,16 @@ class SearchMenu extends SearchDelegate {
 // querying process at the runtime
   @override
   Widget buildSuggestions(BuildContext context) {
+    void openBet() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const BetPage(
+                  details: [],
+                )),
+      );
+    }
+
     List<String> matchQuery = [];
     for (var fruit in searchTerms) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
@@ -74,9 +90,7 @@ class SearchMenu extends SearchDelegate {
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
         var result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
+        return TextButton(onPressed: openBet, child: Text(result));
       },
     );
   }

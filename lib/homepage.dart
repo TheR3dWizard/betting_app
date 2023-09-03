@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'utilities.dart';
 import 'searchpage.dart';
 
@@ -67,13 +64,12 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
                               vertical: 1.0, horizontal: 10),
                           child: Text(
                             "Search for a bet",
-                            style:
-                                TextStyle(fontSize: 20, fontFamily: 'Consolas'),
+                            style: TextStyle(fontSize: 20, fontFamily: font()),
                           ),
                         ),
                         OutlinedButton(
@@ -143,7 +139,7 @@ class _AvailableBetsState extends State<AvailableBets> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: const Color.fromARGB(255, 133, 168, 185),
+          color: const Color.fromARGB(255, 34, 104, 143),
         ),
 
         //color: Colors.blue,

@@ -1,5 +1,42 @@
 {
     "id":"34564",
-    "name":"Who's gonna take the longest to eat",
-    "players":"[TheRedWizard,Pleg]"
+    "title":"Who's the best FPS Player",
+    "name":"This is just some text explaining how the whole thing works",
+    "date":"03-09-2023",
+    "pool":"388",
+    "playersnum":"263",
+    "optionsnum":"5",
+    "options":[
+    {
+        "name":"TheRedWizard",
+        "votes":"34",
+        "money":"76"
+            
+    },
+    {
+        "name":"Pleg",
+        "votes":"44",
+        "money":"66"
+            
+    },
+    {
+        "name":"Alecks",
+        "votes":"24",
+        "money":"56"
+            
+    },
+    {
+        "name":"Link",
+        "votes":"50",
+        "money":"90"
+            
+    },
+    {
+        "name":"Miles",
+        "votes":"69",
+        "money":"100"
+            
+    }
+    ]
+
 }

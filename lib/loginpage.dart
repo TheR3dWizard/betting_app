@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'utilities.dart';
 import 'homepage.dart';
 
@@ -15,14 +12,14 @@ class LoginPage extends StatelessWidget {
             child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+        Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: Text(
               "Sign in",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Consolas'),
+                  fontFamily: font()),
             )),
         LabelledTextField(label: "Username"),
         LabelledTextField(label: "Password"),
