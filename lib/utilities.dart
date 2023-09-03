@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -123,7 +125,7 @@ Future<List<String>> loadSearchTerms() async {
 Future<List<dynamic>> loadBetData() async {
   final String response =
       await rootBundle.loadString('assets/jsons/betdetails.json');
-  final jsonFile = await json.decode(response);
+  var jsonFile = json.decode(response);
   List<dynamic> jsonData = [jsonFile['id']];
   jsonData.add(jsonFile['title']);
   jsonData.add(jsonFile['name']);

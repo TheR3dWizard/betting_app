@@ -28,17 +28,36 @@ class _BetpageState extends State<BetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Example Title")),
+        appBar: AppBar(),
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+              padding: const EdgeInsets.fromLTRB(10, 20, 20, 0),
               child: Center(
-                child: Text("Works",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: font())),
+                child: Text(details[1],
+                    style: TextStyle(fontSize: 30, fontFamily: font())),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 20, 20, 0),
+                    child: Center(
+                      child: Text(details[2],
+                          style: TextStyle(fontSize: 30, fontFamily: font())),
+                    ),
+                  ),
+                  ListView(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 12),
+                    children: [Container()], //TODO just fix this
+                  ),
+                ],
               ),
             )
           ],
